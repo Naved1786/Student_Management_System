@@ -3,10 +3,7 @@ package com.jpahibernate.example.student_management_db.controller;
 import com.jpahibernate.example.student_management_db.model.Student;
 import com.jpahibernate.example.student_management_db.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/student/apis")
@@ -18,5 +15,11 @@ public class StudentController {
     @PostMapping("/save")
     public String saveStudent(@RequestBody Student studentRequest){
         return studentService.addStudent(studentRequest);
+    }
+
+    @DeleteMapping("/delete/{StudentId}")
+    public String deleteStudent(@PathVariable int StudentId){
+        String response= studentService.deleteStudentById(StudentId);
+        return  response;
     }
 }
