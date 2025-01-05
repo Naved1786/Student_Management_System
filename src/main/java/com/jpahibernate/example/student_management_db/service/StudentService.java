@@ -5,6 +5,9 @@ import com.jpahibernate.example.student_management_db.repository.StudentReposito
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import java.util.List;
 
 @Service
 public class StudentService {
@@ -21,4 +24,8 @@ public class StudentService {
         return "Student delted by id : "+StudentId;
     }
 
+    public List<Student> findAllStudent(){
+      List<Student> list= studentRepository.findAll();
+      return  list;
+    }
 }
